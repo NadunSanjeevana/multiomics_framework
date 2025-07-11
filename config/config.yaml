@@ -30,6 +30,6 @@ feature_engineering:
     epigenomics: 20
     metabolomics: 10
 model:
-  # Model parameters here
+  labels_filepath: "config/schizophrenia_mapped_tf_geneset.csv"
 drug_scoring:
   # Drug scoring parameters here 
