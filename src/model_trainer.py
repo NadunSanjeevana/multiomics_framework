@@ -418,6 +418,9 @@ class ModelTrainer:
         X = features['integrated_features']
         # For demonstration, generate synthetic labels
         y = (X.sum(axis=1) > X.sum(axis=1).median()).astype(int)
+        if X.shape[0] < 1:
+            self.logger.error(f"No samples available for training (X shape: {X.shape}). Aborting model training.")
+            raise ValueError(f"No samples available for training. Check your data preprocessing and feature engineering steps.")
         model = RandomForestClassifier(n_estimators=100, random_state=42)
         model.fit(X, y)
         self.logger.info(f"Trained RandomForest model on {X.shape[0]} samples, {X.shape[1]} features.")
