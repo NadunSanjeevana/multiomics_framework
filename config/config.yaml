@@ -1,0 +1,35 @@
+data:
+  transcriptomics:
+    enabled: true
+  proteomics:
+    enabled: true
+  epigenomics:
+    enabled: true
+  metabolomics:
+    enabled: true
+preprocessing:
+  normalization:
+    transcriptomics: tpm
+    proteomics: z-score
+    epigenomics: z-score
+    metabolomics: z-score
+  missing_value_strategy:
+    transcriptomics: mean
+    proteomics: mean
+    epigenomics: mean
+    metabolomics: mean
+  variance_threshold:
+    transcriptomics: 0.01
+    proteomics: 0.01
+    epigenomics: 0.01
+    metabolomics: 0.01
+feature_engineering:
+  pca_components:
+    transcriptomics: 50
+    proteomics: 30
+    epigenomics: 20
+    metabolomics: 10
+model:
+  # Model parameters here
+drug_scoring:
+  # Drug scoring parameters here 
