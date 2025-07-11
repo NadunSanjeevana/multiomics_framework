@@ -101,3 +101,246 @@ PCA does not accept missing values encoded as NaN natively. For supervised learn
 2025-07-11 21:06:57,836 - feature_engineer - INFO - Created GO features for 10000 genes
 2025-07-11 21:06:57,862 - feature_engineer - INFO - Integrated features for 0 genes with 51 features
 2025-07-11 21:06:57,871 - __main__ - ERROR - Pipeline failed with error: Found array with 0 sample(s) (shape=(0, 10)) while a minimum of 2 is required by CCA.
+2025-07-11 21:08:12,935 - __main__ - INFO - Starting Multi-Omics Integration Pipeline
+2025-07-11 21:08:12,936 - __main__ - INFO - Mode: full
+2025-07-11 21:08:12,936 - __main__ - INFO - Output directory: results
+2025-07-11 21:08:12,936 - __main__ - INFO - Loading and integrating multi-omics datasets (transcriptomics, proteomics, epigenomics, metabolomics)...
+2025-07-11 21:08:12,937 - data_loader - INFO - Loading transcriptomics data...
+2025-07-11 21:08:14,316 - data_loader - INFO - Loaded transcriptomics data: (20000, 1000)
+2025-07-11 21:08:14,318 - data_loader - INFO - Loading proteomics data...
+2025-07-11 21:08:14,839 - data_loader - INFO - Loaded proteomics data: (15000, 800)
+2025-07-11 21:08:14,840 - data_loader - INFO - Loading epigenomics data...
+2025-07-11 21:08:24,195 - data_loader - INFO - Loaded epigenomics data: (500000, 200)
+2025-07-11 21:08:24,200 - data_loader - INFO - Loading metabolomics data...
+2025-07-11 21:08:24,276 - data_loader - INFO - Loaded metabolomics data: (5000, 500)
+2025-07-11 21:08:24,278 - data_loader - INFO - Loading annotation data...
+2025-07-11 21:09:08,334 - data_loader - INFO - Loaded PPI data: 50000 interactions
+2025-07-11 21:09:09,490 - data_loader - INFO - Loaded pathway data: 30093 associations
+2025-07-11 21:09:13,525 - data_loader - INFO - Loaded GO data: 55531 associations
+2025-07-11 21:09:13,528 - __main__ - INFO - Preprocessing and normalizing datasets (TPM, z-score, etc.) and mapping to HGNC gene IDs...
+2025-07-11 21:09:13,528 - preprocessor - INFO - Preprocessing transcriptomics data...
+2025-07-11 21:09:14,367 - preprocessor - INFO - Handled missing values for transcriptomics using mean
+2025-07-11 21:09:14,908 - preprocessor - INFO - Removed 0 low-variance features from transcriptomics
+2025-07-11 21:09:15,356 - preprocessor - INFO - Applied log2 transformation
+2025-07-11 21:09:15,660 - preprocessor - INFO - Final fillna(0) applied for transcriptomics to ensure no NaNs remain.
+2025-07-11 21:09:15,661 - preprocessor - INFO - Preprocessing proteomics data...
+2025-07-11 21:09:16,111 - preprocessor - INFO - Handled missing values for proteomics using mean
+2025-07-11 21:09:16,458 - preprocessor - INFO - Normalized proteomics data using z-score
+2025-07-11 21:09:16,668 - preprocessor - INFO - Removed 0 low-variance features from proteomics
+2025-07-11 21:09:16,837 - preprocessor - INFO - Final fillna(0) applied for proteomics to ensure no NaNs remain.
+2025-07-11 21:09:16,838 - preprocessor - INFO - Preprocessing epigenomics data...
+2025-07-11 21:09:22,388 - preprocessor - INFO - Handled missing values for epigenomics using mean
+2025-07-11 21:09:30,877 - preprocessor - INFO - Normalized epigenomics data using z-score
+2025-07-11 21:09:39,689 - preprocessor - INFO - Removed 0 low-variance features from epigenomics
+2025-07-11 21:09:42,476 - preprocessor - INFO - Final fillna(0) applied for epigenomics to ensure no NaNs remain.
+2025-07-11 21:09:42,477 - preprocessor - INFO - Preprocessing metabolomics data...
+2025-07-11 21:09:42,834 - preprocessor - INFO - Handled missing values for metabolomics using mean
+2025-07-11 21:09:42,967 - preprocessor - INFO - Normalized metabolomics data using z-score
+2025-07-11 21:09:43,051 - preprocessor - INFO - Removed 0 low-variance features from metabolomics
+2025-07-11 21:09:43,148 - preprocessor - INFO - Applied log2 transformation
+2025-07-11 21:09:43,178 - preprocessor - INFO - Final fillna(0) applied for metabolomics to ensure no NaNs remain.
+2025-07-11 21:09:43,180 - __main__ - INFO - Engineering integrated features: concatenating omics layers and enriching with pathway, PPI, and annotation data...
+2025-07-11 21:09:43,192 - feature_engineer - INFO - Applying PCA to transcriptomics data with 50 components
+2025-07-11 21:09:47,421 - feature_engineer - INFO - PCA for transcriptomics: 0.068 variance explained
+2025-07-11 21:09:47,422 - feature_engineer - INFO - Applying PCA to proteomics data with 30 components
+2025-07-11 21:09:48,799 - feature_engineer - INFO - PCA for proteomics: 0.052 variance explained
+2025-07-11 21:09:48,800 - feature_engineer - INFO - Applying PCA to epigenomics data with 20 components
+2025-07-11 21:10:01,553 - feature_engineer - INFO - PCA for epigenomics: 0.101 variance explained
+2025-07-11 21:10:01,554 - feature_engineer - INFO - Applying PCA to metabolomics data with 10 components
+2025-07-11 21:10:01,780 - feature_engineer - INFO - PCA for metabolomics: 0.032 variance explained
+2025-07-11 21:10:02,081 - feature_engineer - INFO - Found 5000 common genes
+2025-07-11 21:10:16,266 - feature_engineer - INFO - Created PPI network with 5000 nodes and 49897 edges
+2025-07-11 21:12:09,997 - feature_engineer - INFO - Calculated network metrics for 5000 nodes
+2025-07-11 21:12:12,941 - feature_engineer - INFO - Created pathway features for 10000 genes
+2025-07-11 21:13:16,957 - feature_engineer - INFO - Created GO features for 10000 genes
+2025-07-11 21:13:17,008 - feature_engineer - INFO - Integrated features for 0 genes with 51 features
+2025-07-11 21:13:17,015 - feature_engineer - WARNING - Not enough samples for CCA (view1: 0, view2: 0). Returning original features.
+2025-07-11 21:13:17,017 - __main__ - INFO - Applying dimensionality reduction (PCA) to each omics layer...
+2025-07-11 21:13:17,018 - __main__ - INFO - Fusing multi-omics features using multi-view data fusion (CCA/MKL)...
+2025-07-11 21:13:17,018 - __main__ - INFO - Training model on fused features...
+2025-07-11 21:13:17,032 - __main__ - ERROR - Pipeline failed with error: Found array with 0 sample(s) (shape=(0, 51)) while a minimum of 1 is required by RandomForestClassifier.
+2025-07-11 21:15:48,357 - __main__ - INFO - Starting Multi-Omics Integration Pipeline
+2025-07-11 21:15:48,358 - __main__ - INFO - Mode: full
+2025-07-11 21:15:48,358 - __main__ - INFO - Output directory: results
+2025-07-11 21:15:48,358 - __main__ - INFO - Loading and integrating multi-omics datasets (transcriptomics, proteomics, epigenomics, metabolomics)...
+2025-07-11 21:15:48,359 - data_loader - INFO - Loading transcriptomics data...
+2025-07-11 21:15:49,459 - data_loader - INFO - Loaded transcriptomics data: (20000, 1000)
+2025-07-11 21:15:49,463 - data_loader - INFO - Loading proteomics data...
+2025-07-11 21:15:49,974 - data_loader - INFO - Loaded proteomics data: (15000, 800)
+2025-07-11 21:15:49,976 - data_loader - INFO - Loading epigenomics data...
+2025-07-11 21:15:59,943 - data_loader - INFO - Loaded epigenomics data: (500000, 200)
+2025-07-11 21:15:59,949 - data_loader - INFO - Loading metabolomics data...
+2025-07-11 21:16:00,033 - data_loader - INFO - Loaded metabolomics data: (5000, 500)
+2025-07-11 21:16:00,034 - data_loader - INFO - Loading annotation data...
+2025-07-11 21:17:04,706 - data_loader - INFO - Loaded PPI data: 50000 interactions
+2025-07-11 21:17:06,113 - data_loader - INFO - Loaded pathway data: 30093 associations
+2025-07-11 21:17:11,256 - data_loader - INFO - Loaded GO data: 55531 associations
+2025-07-11 21:17:11,259 - __main__ - INFO - Preprocessing and normalizing datasets (TPM, z-score, etc.) and mapping to HGNC gene IDs...
+2025-07-11 21:17:11,260 - preprocessor - INFO - Preprocessing transcriptomics data...
+2025-07-11 21:17:12,496 - preprocessor - INFO - Handled missing values for transcriptomics using mean
+2025-07-11 21:17:13,172 - preprocessor - INFO - Removed 0 low-variance features from transcriptomics
+2025-07-11 21:17:13,916 - preprocessor - INFO - Applied log2 transformation
+2025-07-11 21:17:14,395 - preprocessor - INFO - Final fillna(0) applied for transcriptomics to ensure no NaNs remain.
+2025-07-11 21:17:14,396 - preprocessor - INFO - Preprocessing proteomics data...
+2025-07-11 21:17:15,733 - preprocessor - INFO - Handled missing values for proteomics using mean
+2025-07-11 21:17:16,239 - preprocessor - INFO - Normalized proteomics data using z-score
+2025-07-11 21:17:16,571 - preprocessor - INFO - Removed 0 low-variance features from proteomics
+2025-07-11 21:17:16,842 - preprocessor - INFO - Final fillna(0) applied for proteomics to ensure no NaNs remain.
+2025-07-11 21:17:16,842 - preprocessor - INFO - Preprocessing epigenomics data...
+2025-07-11 21:17:25,113 - preprocessor - INFO - Handled missing values for epigenomics using mean
+2025-07-11 21:17:33,336 - preprocessor - INFO - Normalized epigenomics data using z-score
+2025-07-11 21:17:50,976 - preprocessor - INFO - Removed 0 low-variance features from epigenomics
+2025-07-11 21:17:52,757 - preprocessor - INFO - Final fillna(0) applied for epigenomics to ensure no NaNs remain.
+2025-07-11 21:17:52,761 - preprocessor - INFO - Preprocessing metabolomics data...
+2025-07-11 21:17:53,093 - preprocessor - INFO - Handled missing values for metabolomics using mean
+2025-07-11 21:17:53,202 - preprocessor - INFO - Normalized metabolomics data using z-score
+2025-07-11 21:17:53,269 - preprocessor - INFO - Removed 0 low-variance features from metabolomics
+2025-07-11 21:17:53,340 - preprocessor - INFO - Applied log2 transformation
+2025-07-11 21:17:53,371 - preprocessor - INFO - Final fillna(0) applied for metabolomics to ensure no NaNs remain.
+2025-07-11 21:17:53,372 - __main__ - INFO - Engineering integrated features: concatenating omics layers and enriching with pathway, PPI, and annotation data...
+2025-07-11 21:17:53,380 - feature_engineer - INFO - Applying PCA to transcriptomics data with 50 components
+2025-07-11 21:17:55,779 - feature_engineer - INFO - PCA for transcriptomics: 0.068 variance explained
+2025-07-11 21:17:55,779 - feature_engineer - INFO - Applying PCA to proteomics data with 30 components
+2025-07-11 21:17:57,072 - feature_engineer - INFO - PCA for proteomics: 0.052 variance explained
+2025-07-11 21:17:57,073 - feature_engineer - INFO - Applying PCA to epigenomics data with 20 components
+2025-07-11 21:18:06,295 - feature_engineer - INFO - PCA for epigenomics: 0.101 variance explained
+2025-07-11 21:18:06,296 - feature_engineer - INFO - Applying PCA to metabolomics data with 10 components
+2025-07-11 21:18:06,480 - feature_engineer - INFO - PCA for metabolomics: 0.032 variance explained
+2025-07-11 21:18:06,742 - feature_engineer - INFO - Found 5000 common genes
+2025-07-11 21:18:21,133 - feature_engineer - INFO - Created PPI network with 5000 nodes and 49897 edges
+2025-07-11 21:19:56,663 - feature_engineer - INFO - Calculated network metrics for 5000 nodes
+2025-07-11 21:19:59,491 - feature_engineer - INFO - Created pathway features for 10000 genes
+2025-07-11 21:20:26,645 - feature_engineer - INFO - Created GO features for 10000 genes
+2025-07-11 21:20:26,676 - feature_engineer - INFO - Integrated features for 0 genes with 51 features
+2025-07-11 21:20:26,683 - feature_engineer - WARNING - Not enough samples for CCA (view1: 0, view2: 0). Returning original features.
+2025-07-11 21:20:26,683 - __main__ - INFO - Applying dimensionality reduction (PCA) to each omics layer...
+2025-07-11 21:20:26,684 - __main__ - INFO - Fusing multi-omics features using multi-view data fusion (CCA/MKL)...
+2025-07-11 21:20:26,684 - __main__ - INFO - Training model on fused features...
+2025-07-11 21:20:26,686 - model_trainer - ERROR - No samples available for training (X shape: (0, 51)). Aborting model training.
+2025-07-11 21:20:26,687 - __main__ - ERROR - Pipeline failed with error: No samples available for training. Check your data preprocessing and feature engineering steps.
+2025-07-11 21:21:46,680 - __main__ - INFO - Starting Multi-Omics Integration Pipeline
+2025-07-11 21:21:46,680 - __main__ - INFO - Mode: full
+2025-07-11 21:21:46,680 - __main__ - INFO - Output directory: results
+2025-07-11 21:21:46,681 - __main__ - INFO - Loading and integrating multi-omics datasets (transcriptomics, proteomics, epigenomics, metabolomics)...
+2025-07-11 21:21:46,681 - data_loader - INFO - Loading transcriptomics data...
+2025-07-11 21:21:47,769 - data_loader - INFO - Loaded transcriptomics data: (20000, 1000)
+2025-07-11 21:21:47,771 - data_loader - INFO - Loading proteomics data...
+2025-07-11 21:21:48,261 - data_loader - INFO - Loaded proteomics data: (15000, 800)
+2025-07-11 21:21:48,263 - data_loader - INFO - Loading epigenomics data...
+2025-07-11 21:21:57,069 - data_loader - INFO - Loaded epigenomics data: (500000, 200)
+2025-07-11 21:21:57,074 - data_loader - INFO - Loading metabolomics data...
+2025-07-11 21:21:57,134 - data_loader - INFO - Loaded metabolomics data: (5000, 500)
+2025-07-11 21:21:57,135 - data_loader - INFO - Loading annotation data...
+2025-07-11 21:22:40,854 - data_loader - INFO - Loaded PPI data: 50000 interactions
+2025-07-11 21:22:41,863 - data_loader - INFO - Loaded pathway data: 30093 associations
+2025-07-11 21:22:45,449 - data_loader - INFO - Loaded GO data: 55531 associations
+2025-07-11 21:22:45,452 - __main__ - INFO - Preprocessing and normalizing datasets (TPM, z-score, etc.) and mapping to HGNC gene IDs...
+2025-07-11 21:22:45,453 - preprocessor - INFO - Preprocessing transcriptomics data...
+2025-07-11 21:22:46,117 - preprocessor - INFO - Handled missing values for transcriptomics using mean
+2025-07-11 21:22:46,523 - preprocessor - INFO - Removed 0 low-variance features from transcriptomics
+2025-07-11 21:22:47,035 - preprocessor - INFO - Applied log2 transformation
+2025-07-11 21:22:47,448 - preprocessor - INFO - Final fillna(0) applied for transcriptomics to ensure no NaNs remain.
+2025-07-11 21:22:47,448 - preprocessor - INFO - Preprocessing proteomics data...
+2025-07-11 21:22:48,126 - preprocessor - INFO - Handled missing values for proteomics using mean
+2025-07-11 21:22:48,582 - preprocessor - INFO - Normalized proteomics data using z-score
+2025-07-11 21:22:48,934 - preprocessor - INFO - Removed 0 low-variance features from proteomics
+2025-07-11 21:22:49,215 - preprocessor - INFO - Final fillna(0) applied for proteomics to ensure no NaNs remain.
+2025-07-11 21:22:49,216 - preprocessor - INFO - Preprocessing epigenomics data...
+2025-07-11 21:22:56,746 - preprocessor - INFO - Handled missing values for epigenomics using mean
+2025-07-11 21:23:01,869 - preprocessor - INFO - Normalized epigenomics data using z-score
+2025-07-11 21:23:17,088 - preprocessor - INFO - Removed 0 low-variance features from epigenomics
+2025-07-11 21:23:18,514 - preprocessor - INFO - Final fillna(0) applied for epigenomics to ensure no NaNs remain.
+2025-07-11 21:23:18,517 - preprocessor - INFO - Preprocessing metabolomics data...
+2025-07-11 21:23:18,771 - preprocessor - INFO - Handled missing values for metabolomics using mean
+2025-07-11 21:23:18,865 - preprocessor - INFO - Normalized metabolomics data using z-score
+2025-07-11 21:23:18,915 - preprocessor - INFO - Removed 0 low-variance features from metabolomics
+2025-07-11 21:23:18,969 - preprocessor - INFO - Applied log2 transformation
+2025-07-11 21:23:18,994 - preprocessor - INFO - Final fillna(0) applied for metabolomics to ensure no NaNs remain.
+2025-07-11 21:23:18,996 - __main__ - INFO - Engineering integrated features: concatenating omics layers and enriching with pathway, PPI, and annotation data...
+2025-07-11 21:23:19,001 - feature_engineer - INFO - Applying PCA to transcriptomics data with 50 components
+2025-07-11 21:23:20,874 - feature_engineer - INFO - PCA for transcriptomics: 0.068 variance explained
+2025-07-11 21:23:20,875 - feature_engineer - INFO - Applying PCA to proteomics data with 30 components
+2025-07-11 21:23:21,717 - feature_engineer - INFO - PCA for proteomics: 0.052 variance explained
+2025-07-11 21:23:21,717 - feature_engineer - INFO - Applying PCA to epigenomics data with 20 components
+2025-07-11 21:23:29,263 - feature_engineer - INFO - PCA for epigenomics: 0.101 variance explained
+2025-07-11 21:23:29,264 - feature_engineer - INFO - Applying PCA to metabolomics data with 10 components
+2025-07-11 21:23:29,536 - feature_engineer - INFO - PCA for metabolomics: 0.032 variance explained
+2025-07-11 21:23:29,780 - feature_engineer - INFO - Found 5000 common genes
+2025-07-11 21:23:39,704 - feature_engineer - INFO - Created PPI network with 5000 nodes and 49897 edges
+2025-07-11 21:25:07,394 - feature_engineer - INFO - Calculated network metrics for 5000 nodes
+2025-07-11 21:25:10,129 - feature_engineer - INFO - Created pathway features for 10000 genes
+2025-07-11 21:25:37,921 - feature_engineer - INFO - Created GO features for 10000 genes
+2025-07-11 21:25:37,940 - feature_engineer - INFO - Integrated features for 0 genes with 51 features
+2025-07-11 21:25:37,945 - feature_engineer - WARNING - Not enough samples for CCA (view1: 0, view2: 0). Returning original features.
+2025-07-11 21:25:37,946 - __main__ - INFO - Applying dimensionality reduction (PCA) to each omics layer...
+2025-07-11 21:25:37,946 - __main__ - INFO - Fusing multi-omics features using multi-view data fusion (CCA/MKL)...
+2025-07-11 21:25:37,946 - __main__ - INFO - Training model on fused features...
+2025-07-11 21:25:37,952 - model_trainer - ERROR - No samples available for training (X shape: (0, 51)). Aborting model training.
+2025-07-11 21:25:37,953 - __main__ - ERROR - Pipeline failed with error: No samples available for training. Check your data preprocessing and feature engineering steps.
+2025-07-11 21:27:22,125 - __main__ - INFO - Starting Multi-Omics Integration Pipeline
+2025-07-11 21:27:22,126 - __main__ - INFO - Mode: full
+2025-07-11 21:27:22,126 - __main__ - INFO - Output directory: results
+2025-07-11 21:27:22,126 - __main__ - INFO - Loading and integrating multi-omics datasets (transcriptomics, proteomics, epigenomics, metabolomics)...
+2025-07-11 21:27:22,126 - data_loader - INFO - Loading transcriptomics data...
+2025-07-11 21:27:23,427 - data_loader - INFO - Loaded transcriptomics data: (20000, 1000)
+2025-07-11 21:27:23,431 - data_loader - INFO - Loading proteomics data...
+2025-07-11 21:27:24,215 - data_loader - INFO - Loaded proteomics data: (15000, 800)
+2025-07-11 21:27:24,219 - data_loader - INFO - Loading epigenomics data...
+2025-07-11 21:27:34,336 - data_loader - INFO - Loaded epigenomics data: (500000, 200)
+2025-07-11 21:27:34,340 - data_loader - INFO - Loading metabolomics data...
+2025-07-11 21:27:34,403 - data_loader - INFO - Loaded metabolomics data: (5000, 500)
+2025-07-11 21:27:34,405 - data_loader - INFO - Loading annotation data...
+2025-07-11 21:28:17,594 - data_loader - INFO - Loaded PPI data: 50000 interactions
+2025-07-11 21:28:18,531 - data_loader - INFO - Loaded pathway data: 30093 associations
+2025-07-11 21:28:21,964 - data_loader - INFO - Loaded GO data: 55531 associations
+2025-07-11 21:28:21,967 - __main__ - INFO - Preprocessing and normalizing datasets (TPM, z-score, etc.) and mapping to HGNC gene IDs...
+2025-07-11 21:28:21,967 - preprocessor - INFO - Preprocessing transcriptomics data...
+2025-07-11 21:28:22,581 - preprocessor - INFO - Handled missing values for transcriptomics using mean
+2025-07-11 21:28:23,010 - preprocessor - INFO - Removed 0 low-variance features from transcriptomics
+2025-07-11 21:28:23,351 - preprocessor - INFO - Applied log2 transformation
+2025-07-11 21:28:23,703 - preprocessor - INFO - Final fillna(0) applied for transcriptomics to ensure no NaNs remain.
+2025-07-11 21:28:23,704 - preprocessor - INFO - Preprocessing proteomics data...
+2025-07-11 21:28:24,276 - preprocessor - INFO - Handled missing values for proteomics using mean
+2025-07-11 21:28:24,685 - preprocessor - INFO - Normalized proteomics data using z-score
+2025-07-11 21:28:24,975 - preprocessor - INFO - Removed 0 low-variance features from proteomics
+2025-07-11 21:28:25,184 - preprocessor - INFO - Final fillna(0) applied for proteomics to ensure no NaNs remain.
+2025-07-11 21:28:25,185 - preprocessor - INFO - Preprocessing epigenomics data...
+2025-07-11 21:28:31,812 - preprocessor - INFO - Handled missing values for epigenomics using mean
+2025-07-11 21:28:37,763 - preprocessor - INFO - Normalized epigenomics data using z-score
+2025-07-11 21:29:01,968 - preprocessor - INFO - Removed 0 low-variance features from epigenomics
+2025-07-11 21:29:05,448 - preprocessor - INFO - Final fillna(0) applied for epigenomics to ensure no NaNs remain.
+2025-07-11 21:29:05,563 - preprocessor - INFO - Preprocessing metabolomics data...
+2025-07-11 21:29:07,644 - preprocessor - INFO - Handled missing values for metabolomics using mean
+2025-07-11 21:29:08,922 - preprocessor - INFO - Normalized metabolomics data using z-score
+2025-07-11 21:29:09,297 - preprocessor - INFO - Removed 0 low-variance features from metabolomics
+2025-07-11 21:29:09,443 - preprocessor - INFO - Applied log2 transformation
+2025-07-11 21:29:09,471 - preprocessor - INFO - Final fillna(0) applied for metabolomics to ensure no NaNs remain.
+2025-07-11 21:29:09,478 - __main__ - INFO - Engineering integrated features: concatenating omics layers and enriching with pathway, PPI, and annotation data...
+2025-07-11 21:29:09,491 - feature_engineer - INFO - Applying PCA to transcriptomics data with 50 components
+2025-07-11 21:29:13,830 - feature_engineer - INFO - PCA for transcriptomics: 0.068 variance explained
+2025-07-11 21:29:13,831 - feature_engineer - INFO - Applying PCA to proteomics data with 30 components
+2025-07-11 21:29:15,617 - feature_engineer - INFO - PCA for proteomics: 0.052 variance explained
+2025-07-11 21:29:15,620 - feature_engineer - INFO - Applying PCA to epigenomics data with 20 components
+2025-07-11 21:29:25,547 - feature_engineer - INFO - PCA for epigenomics: 0.101 variance explained
+2025-07-11 21:29:25,548 - feature_engineer - INFO - Applying PCA to metabolomics data with 10 components
+2025-07-11 21:29:25,816 - feature_engineer - INFO - PCA for metabolomics: 0.032 variance explained
+2025-07-11 21:29:26,004 - feature_engineer - INFO - Found 5000 common genes
+2025-07-11 21:29:35,678 - feature_engineer - INFO - Created PPI network with 5000 nodes and 49897 edges
+2025-07-11 21:31:03,174 - feature_engineer - INFO - Calculated network metrics for 5000 nodes
+2025-07-11 21:31:05,863 - feature_engineer - INFO - Created pathway features for 10000 genes
+2025-07-11 21:31:32,816 - feature_engineer - INFO - Created GO features for 10000 genes
+2025-07-11 21:31:32,844 - feature_engineer - WARNING - No common genes between gene_features and network_features. Using union and filling missing values with 0.
+2025-07-11 21:31:32,886 - feature_engineer - INFO - Integrated features for 20000 genes with 51 features
+2025-07-11 21:31:33,125 - feature_engineer - INFO - Applied CCA fusion: (20000, 47)
+2025-07-11 21:31:33,126 - __main__ - INFO - Applying dimensionality reduction (PCA) to each omics layer...
+2025-07-11 21:31:33,127 - __main__ - INFO - Fusing multi-omics features using multi-view data fusion (CCA/MKL)...
+2025-07-11 21:31:33,127 - __main__ - INFO - Training model on fused features...
+2025-07-11 21:31:34,946 - model_trainer - INFO - Trained RandomForest model on 20000 samples, 47 features.
+2025-07-11 21:31:34,977 - model_trainer - INFO - Saved model to results\model.pkl
+2025-07-11 21:31:35,033 - feature_engineer - INFO - Saved features to results\features.pkl
+2025-07-11 21:31:35,033 - __main__ - INFO - Scoring drugs using weighted aggregate of gene risk scores (network centrality, pathway importance, etc.)...
+2025-07-11 21:31:35,984 - drug_scorer - INFO - Loaded 5527 drug-target associations
+2025-07-11 21:31:36,154 - drug_scorer - INFO - Calculated risk scores for 20000 genes
+2025-07-11 21:31:37,172 - drug_scorer - INFO - Scored 1000 drugs
+2025-07-11 21:31:37,259 - drug_scorer - INFO - Saved drug scores to results\drug_scores.csv
+2025-07-11 21:31:37,262 - __main__ - INFO - Pipeline completed successfully!

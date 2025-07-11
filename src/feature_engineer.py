@@ -99,7 +99,14 @@ class FeatureEngineer:
                 gene_ids = self._map_features_to_genes(data.index, data_type)
                 gene_sets.append(set(gene_ids))
         
-        common_genes = set.intersection(*gene_sets) if gene_sets else set()
+        if gene_sets:
+            common_genes = set.intersection(*gene_sets)
+            if not common_genes:
+                # Fallback: use union if intersection is empty
+                self.logger.warning("No common genes across all omics datasets. Falling back to union of all genes.")
+                common_genes = set.union(*gene_sets)
+        else:
+            common_genes = set()
         common_genes = list(common_genes)[:5000]  # Limit for demo
         
         self.logger.info(f"Found {len(common_genes)} common genes")
@@ -299,20 +306,21 @@ class FeatureEngineer:
     def _integrate_features(self, gene_features: pd.DataFrame, 
                           network_features: pd.DataFrame) -> pd.DataFrame:
         """Integrate gene features with network features"""
-        
         # Find common genes
         common_genes = gene_features.index.intersection(network_features.index)
-        
-        # Align dataframes
-        gene_features_aligned = gene_features.loc[common_genes]
-        network_features_aligned = network_features.loc[common_genes]
-        
+        if len(common_genes) == 0:
+            self.logger.warning("No common genes between gene_features and network_features. Using union and filling missing values with 0.")
+            all_genes = gene_features.index.union(network_features.index)
+            gene_features_aligned = gene_features.reindex(all_genes).fillna(0)
+            network_features_aligned = network_features.reindex(all_genes).fillna(0)
+        else:
+            # Align dataframes
+            gene_features_aligned = gene_features.loc[common_genes]
+            network_features_aligned = network_features.loc[common_genes]
         # Concatenate features
         integrated = pd.concat([gene_features_aligned, network_features_aligned], axis=1)
-        
         # Handle missing values
         integrated = integrated.fillna(0)
-        
         self.logger.info(f"Integrated features for {len(integrated)} genes with {len(integrated.columns)} features")
         return integrated
     
